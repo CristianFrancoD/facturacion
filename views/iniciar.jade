@@ -1,5 +1,16 @@
 extends ./layout.jade
 block contenido
+  div(class="container" align="center" style="text-align: center; margin-top: 15%")
     h1 Iniciar sesion
-    form
+    br
+    form(action="/sessions" method="POST")
+      div(class="input-group" style="margin-left:35%")
+        span(class="input-group-addon" id="basic-addon1" ) @
+        input(type="text" name="email" class="form-control" style="width: 40%" id="email" placeholder="Email" aria-describedby="sizing-addon1")
+      br
+      div(class="input-group" style="margin-left:35%")
+        span(class="input-group-addon" id="basic-addon1" style="margin-left:35%") ?
+        input(type="password" name="contra" class="form-control" id="contra" placeholder="Contra" style="width: 40%" aria-describedby="sizing-addon1")
+      br 
+      input(type="submit" value="Aceptar" class="btn btn-default input-lg" width="60%") 
     

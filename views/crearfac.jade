@@ -1,0 +1,15 @@
+extends ./layout.jade
+block contenido
+    h1 Crear factura
+    form(action="/crearfac", method="POST")
+      h3 Cliente
+      input(type="text" name="cliente" id="cliente" placeholder="Cliente" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 RFC
+      input(type="text" name="rfc" id="rfc" placeholder="RFC" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 Direccion
+      input(type="text" name="direccion" id="direccion" placeholder="Direccion" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 Fecha
+      input(type="text" name="fecha" id="fecha" placeholder="Fecha" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      br
+      input(type="submit" value="Aceptar" class="btn btn-default input-lg") 
+    

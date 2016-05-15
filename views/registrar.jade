@@ -1,3 +1,17 @@
 extends ./layout.jade
 block contenido
-  h1 Registrarse
+  div(class="container")
+    h1 Registrarse
+    br
+    br
+    form(action="/registrar", method="POST")
+      h3 Nombre
+      input(type="text" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 Apellido
+      input(type="text" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 Correo
+      input(type="text" name="email" id="email" placeholder="Email" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      h3 Correo
+      input(type="password" name="contra" id="contra" placeholder="Contra" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      br
+      input(type="submit" value="Aceptar" class="btn btn-default input-lg") 
