@@ -12,7 +12,7 @@ nombre:String,
 apellido: String,
 email:String,
 contrasena:String,
-facturas:{type : mongoose.Schema.ObjectId, ref : 'Factura'}
+
 });
 
 facturaSchema.add({
@@ -29,8 +29,8 @@ productos: [{
 }],
   subtotal: Number,
   iva: Number,
-  total: Number
-
+  total: Number,
+  usuario: {type : mongoose.Schema.ObjectId, ref : 'Usuario'}
 });
 
 

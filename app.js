@@ -80,12 +80,29 @@ app.get("/crearfac",function(req,res){
 });
 
 app.post("/crearfac", function(req,res){
+  var miproductos = {
+    cantidad: req.body.cant ,
+    descripcion: req.body.desc,
+    preciounitario: req.body.punit,
+    preciototal: req.body.ptotal
+
+  }
+  var sb = req.body.subtotal;
+  var ivasiempre = 16;
+  var tot = (sb * ivasiempre) + sb;
 
   var factura = new Factura({
     cliente: req.body.cliente,
     RFC: req.body.rfc,
     direccion: req.body.direccion,
-    fecha: req.body.fecha
+    fecha: req.body.fecha,
+    usuario: req.session.user_id,
+    noFactura: req.body.nofac,
+    productos: miproductos,
+    //todo tomar en cuanta la cantidad para el total
+    subtotal: req.body.subtotal,
+    iva: ivasiempre,
+    total : sb
 
   });
   factura.save().then(function(us){
@@ -101,15 +118,29 @@ app.post("/crearfac", function(req,res){
 
 
 });
+app.get("/dashboard",function(req,res){
 
+  res.render("dashboard");
+      Factura
+      .find({})
+      .populate('usuario')
+
+      .exec(function (err, facturas) {
+      if (err) console.log(String(err));
+
+        console.log(facturas);
+      }
+
+
+});
 
 
 app.post("/sessions",function(req,res){
   Usuario.findOne({email:req.body.email, contrasena:req.body.contra},function(err,user){
     console.log("Hola");
   req.session.user_id = user._id;
-  res.render("dashboard");
-  console.log(req.session.user_id);
+  res.redirect("dashboard");
+
   })
 
 });
