@@ -1,7 +1,37 @@
 extends ./layout.jade
 block contenido
     h1 dashboard
-    a(href="/perfil") Perfil
-    br
     a(href="/crearfac") Crear factura
+    div
+      h3 Mis facturas
+      if hayfacturas
+        each factura in facturas
+          hr
+          p Cliente: #{factura.cliente}
+          br
+          p RFC: #{factura.RFC}
+          br
+          p Direccion: #{factura.direccion}
+          br
+          p No. factura: #{factura.noFactura}
+          br
+          p Fecha: #{factura.fecha}
+          br
+          each producto in factura.productos
+            p Cantidad: #{producto.canitad}
+            br
+            p Descripcion: #{producto.descripcion}
+            br
+            p Precio unitario: #{producto.preciounitario}
+            br
+            p Precio total: #{producto.preciototal}
+          br
+          p Sub total: #{factura.subtotal}
+          br
+          p IVA: #{factura.iva}
+          br
+          p Total: #{factura.total}
+          hr
+      else 
+        h4 Usted no cuenta con facturas actualmente. Pulse en "Crear factura" para crear su priemr factura
     

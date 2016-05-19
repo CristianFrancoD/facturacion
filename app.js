@@ -106,7 +106,7 @@ app.post("/crearfac", function(req,res){
 
   });
   factura.save().then(function(us){
-  res.redirect("/sessions")
+  res.redirect("/dashboard")
   console.log("Se guardaron sus datos correctamente");
 
   },function(err){
@@ -119,17 +119,40 @@ app.post("/crearfac", function(req,res){
 
 });
 app.get("/dashboard",function(req,res){
+  var datos = [];
 
-  res.render("dashboard");
+  var hayfacturas;
+  Factura.count({usuario: req.session.user_id},function(err,count){
+  if(err)console.log(String(err));
+
+  if(count>0){
+    hayfacturas = true;
+
+  }else{
+    hayfacturas = false;
+  }
+
+})
+
+
+
       Factura
-      .find({})
-      .populate('usuario')
-
+      .find({usuario: req.session.user_id})
       .exec(function (err, facturas) {
-      if (err) console.log(String(err));
+        if (err) console.log(String(err));
 
-        console.log(facturas);
-      }
+
+        for(var val in facturas) {
+          datos.push(facturas[val])
+
+        }
+
+  res.render("./dashboard",{
+    facturas:datos,
+    hayfacturas
+  });
+
+      });
 
 
 });
@@ -137,7 +160,6 @@ app.get("/dashboard",function(req,res){
 
 app.post("/sessions",function(req,res){
   Usuario.findOne({email:req.body.email, contrasena:req.body.contra},function(err,user){
-    console.log("Hola");
   req.session.user_id = user._id;
   res.redirect("dashboard");
 
