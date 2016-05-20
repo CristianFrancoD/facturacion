@@ -16,6 +16,7 @@ contrasena:String,
 });
 
 facturaSchema.add({
+id:ObjectId,
 cliente: String,
 RFC: String,
 direccion: String,

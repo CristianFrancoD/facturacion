@@ -1,37 +1,81 @@
 extends ./layout.jade
 block contenido
-    h1 dashboard
     a(href="/crearfac") Crear factura
-    div
-      h3 Mis facturas
-      if hayfacturas
+    if hayfacturas
         each factura in facturas
-          hr
-          p Cliente: #{factura.cliente}
-          br
-          p RFC: #{factura.RFC}
-          br
-          p Direccion: #{factura.direccion}
-          br
-          p No. factura: #{factura.noFactura}
-          br
-          p Fecha: #{factura.fecha}
-          br
-          each producto in factura.productos
-            p Cantidad: #{producto.canitad}
-            br
-            p Descripcion: #{producto.descripcion}
-            br
-            p Precio unitario: #{producto.preciounitario}
-            br
-            p Precio total: #{producto.preciototal}
-          br
-          p Sub total: #{factura.subtotal}
-          br
-          p IVA: #{factura.iva}
-          br
-          p Total: #{factura.total}
-          hr
-      else 
+          section(style="margin-top: 2%")
+            div(id="factura" class="container" style="border: 2px solid #cfcfcf")
+              div(class="row" style="margin: 1%")
+                  div(class="col-xs-4")
+                    img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_the_Government_of_Mexico_(linear).svg/150px-Seal_of_the_Government_of_Mexico_(linear).svg.png"
+                    style="width: 40%")
+                  div(class="col-xs-4")
+                    h4 Empresa SA de CV
+                    h4 R.F.C.RAAE
+                    h4  Calle equis #0000 col cero
+                    h4  Codigo postal 99999
+                  div(class="col-xs-4")
+                    table(class="table table-bordered")
+                      tr
+                        th(style="background-color: #27a6f1; color: white; text-align: center") No. Factura
+                      tr 
+                        th(style="color: #27a6f1; text-align: center") #{factura.noFactura}
+                      tr 
+                        th(style="background-color: #27a6f1; color: white; text-align: center") Fecha
+                      tr 
+                        th(style="color: #27a6f1; text-align: center") #{factura.fecha}
+              div(class="row" style="margin: 1%")
+                div(class="col-xs-8" style="border: 2px solid #27a6f1")
+                  h4 Cliente     #{factura.cliente}         
+                  h4 R.F.C.      #{factura.RFC} 
+                  h4 Direccion   #{factura.direccion}
+                div(class="col-xs-4")   
+                  table(class="table table-bordered")
+                    tr 
+                      th(style="color: #27a6f1; text-align: center") blank space?
+                    tr 
+                      th(style="color: #27a6f1; text-align: center") blank space? 
+                    tr 
+                      th(style="color: #27a6f1; text-align: center") blank space?
+                each producto in factura.productos       
+                  div(style="margin: 1%") 
+                    table(class="table table-bordered")
+                      tr 
+                        th(style="background-color: #27a6f1; color: white; text-align: center; width: 5%") Cantidad
+                        th(style="background-color: #27a6f1; color: white; text-align: center") Descripcion
+                        th(style="background-color: #27a6f1; color: white; text-align: center; width: 15%") Precio unitario  
+                        th(style="background-color: #27a6f1; color: white; text-align: center; width: 15%") Precio total  
+                      tr 
+                        th(style="color: #27a6f1; text-align: center; height: 300px") #{producto.canitad}
+                        th(style="color: #27a6f1; text-align: center") #{producto.descripcion}  
+                        th(style="color: #27a6f1; text-align: center") #{producto.preciounitario}
+                        th(style="color: #27a6f1; text-align: center") #{producto.preciototal}
+                  div(class="row" style="margin: 1%")
+                    div(class="col-xs-8" style="border: 2px solid #27a6f1; height: 110px")
+                      h3(style="color:  #cfcfcf") Precio con letra
+                    div(class="col-xs-4")
+                      table(class="table table-bordered")
+                        tr 
+                          th(style="background-color: #27a6f1; color: white; text-align: center; width: 50%") Subtotal
+                          th(style="color: #27a6f1; text-align: center") #{factura.subtotal}
+                        tr 
+                          th(style="background-color: #27a6f1; color: white; text-align: center; width: 50%") IVA
+                          th(style="color: #27a6f1; text-align: center") #{factura.iva}   
+                        tr 
+                          th(style="background-color: #27a6f1; color: white; text-align: center; width: 50%") Total
+                          th(style="color: #27a6f1; text-align: center") #{factura.total}                    
+                  div(class="row" style="margin: 1%")
+                    div(class="col-xs-4" style="border: 2px solid #27a6f1; width: 250px; height: 150px")
+                    div(class="col-xs-4" style="text-align: center ")  
+                    div(class="col-xs-4" style="text-align: center ")  
+                      div(style="margin-top: 100px;border: 2px solid #27a6f1; width: 100%; height: 0px")  
+                      h2(style="color: #cfcfcf") Firma del comprador
+                  div
+                    form(method="post" action="/delFac/#{factura._id}")
+                      input(type="submit" class="btn btn-primary" value="Eliminar factura" name="delFac")
+    else 
         h4 Usted no cuenta con facturas actualmente. Pulse en "Crear factura" para crear su priemr factura
-    
+                
+              
+              
+              

@@ -99,7 +99,6 @@ app.post("/crearfac", function(req,res){
     usuario: req.session.user_id,
     noFactura: req.body.nofac,
     productos: miproductos,
-    //todo tomar en cuanta la cantidad para el total
     subtotal: req.body.subtotal,
     iva: ivasiempre,
     total : sb
@@ -153,6 +152,16 @@ app.get("/dashboard",function(req,res){
   });
 
       });
+
+
+});
+
+app.post("/delFac/:idFac", function(req,res){
+  console.log(req.params.idFac);
+  Factura.remove({_id:req.params.idFac}, function(err,removed) {
+    res.redirect("/dashboard");
+
+});
 
 
 });
