@@ -1,0 +1,21 @@
+extends ./layout.jade
+block contenido
+  form(method="post" action="/AgregarProd/#{factura}")
+    div(class="row")
+      div(class="col-xs-2")       
+        h3 Cantidad
+        input(type="text" name="ncant" id="ncant" placeholder="Cantidad" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[0-9]+" required)
+      div(class="col-xs-6")    
+        h3 Descripcion
+        input(type="text" name="ndesc" id="ndesc" placeholder="Descripcion" aria-describedby="sizing-addon1" style="width: 100%" class="form-control")
+      div(class="col-xs-4")    
+        h3 Precio unitario
+        input(type="text" name="npunit" id="npunit" placeholder="Precio unitario" aria-describedby="sizing-addon1" style="width: 60%" class="form-control" pattern="[0-9]+" required)
+    div(class="row")  
+      div(class="col-xs-2")    
+        h3 Precio total
+        input(type="text" name="nptotal" id="nptotal" placeholder="Precio total" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[0-9]+" required)
+      div(class="col-xs-2")
+    input(type="submit" value="Aceptar" class="btn btn-success input-lg" style="width: 100%") 
+
+        

@@ -20,7 +20,7 @@ id:ObjectId,
 cliente: String,
 RFC: String,
 direccion: String,
-fecha: String,
+fecha: Date,
 noFactura: Number,
 productos: [{
   cantidad: Number,
