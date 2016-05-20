@@ -73,6 +73,8 @@ block contenido
                   div
                     form(method="post" action="/delFac/#{factura._id}")
                       input(type="submit" class="btn btn-primary" value="Eliminar factura" name="delFac")
+                    form(method="get" action="/pdf/#{factura._id}")
+                      input(type="submit" class="btn btn-primary" value="generar pdf" name="pdf")  
     else 
         h4 Usted no cuenta con facturas actualmente. Pulse en "Crear factura" para crear su priemr factura
                 

@@ -5,6 +5,10 @@ var Factura = require("./models/cosas").Factura;
 var bodyParser = require("body-parser");
 var session = require("express-session");
 app.set("view engine","jade");
+var pdf = require('pdfkit');
+var fs = require('fs');
+
+var fact;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -22,6 +26,89 @@ app.get("/",function(req, res){
 
   res.render("index");
 //  console.log(req.session.user_id);
+});
+
+app.get("/pdf/:idFac",function(req,res){
+var coso;
+  Factura.findOne({_id:req.params.idFac},function(err,factura){
+    var myDoc = new pdf;
+
+    myDoc.pipe(fs.createWriteStream("node.pdf"));
+    myDoc.pipe(res);
+    myDoc.font('Times-Roman')
+         .fontSize(48)
+         .text(factura.cliente,100,100);
+
+         myDoc.fontSize(25)
+            .text('Here is some vector graphics...', 100, 80);
+
+    myDoc.end();
+  })
+
+
+
+
+  /*var PDFDocument = require('pdfkit'); // add pdfkit module to access it
+
+   var doc = new PDFDocument(); // create instance of PDFDocument
+
+   doc.pipe(fs.createWriteStream('/archivo.pdf'));
+
+ // Respuesta HTTP
+ doc.pipe(res);
+
+ // Agregar contenido
+
+ // Agregar una fuente al documento y un texto con la fuente
+ doc.font('fonts/helvetica.ttf')
+  .fontSize(25)
+  .text('Helvetica rocks!', 100, 100);
+
+ // Agregar otra página
+ doc.addPage()
+  .fontSize(25)
+  .text('Acá vienen gráficos!', 100, 100);
+
+ // Dibujar un triángulo
+ doc.save()
+    .moveTo(100, 150)
+    .lineTo(100, 250)
+    .lineTo(200, 250)
+    .fill("#FF3300");
+
+ // Dibujar un círculo
+ doc.circle(280, 200, 50)
+    .fill("#6600FF");
+
+ // Path SVG
+ doc.scale(0.6)
+    .translate(470, 130)
+    .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+    .fill('green', 'even-odd')
+    .restore();
+
+ // Texto en Columans
+ doc.text('And here is some wrapped text...', 100, 300)
+    .font('Times-Roman', 13)
+    .moveDown()
+    .text(lorem, {
+      width: 412,
+      align: 'justify',
+      indent: 30,
+      columns: 2,
+      height: 300,
+      ellipsis: true
+    });
+
+
+ doc.end();
+
+  // doc.write(path.resolve(".")+'/PDF/'+filename+'.pdf'); // it create a file that write the document
+
+   //res.download(path.resolve(".")+'/PDF/'+filename+'.pdf'); // it download this file
+*/
+
+
 });
 
 
