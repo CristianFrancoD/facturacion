@@ -1,6 +1,12 @@
 extends ./layout.jade
 block contenido
-    a(href="/crearfac") Crear factura
+    div(class="container" style="margin-top: 2%; text-align: center")
+      h1(style="color: #cfcfcf") ¡Bienvenido! aqui puedes ver tus facturas las veces que quieras.
+      br
+      button(type="button" class="btn btn-primary")
+        a(href="/crearfac" style="color: white; text-decoration: none; ") 
+          h5() Crear factura
+      hr()    
     if hayfacturas
         each factura in facturas
           section(style="margin-top: 2%")
@@ -76,7 +82,9 @@ block contenido
                     form(method="get" action="/pdf/#{factura._id}")
                       input(type="submit" class="btn btn-primary" value="generar pdf" name="pdf")  
     else 
-        h4 Usted no cuenta con facturas actualmente. Pulse en "Crear factura" para crear su priemr factura
+        div(class="container" style="margin-top: 2%; text-align: center")
+          h1(style="color: #cfcfcf") 404 :(!
+              h4(style="color: #cfcfcf") Usted no cuenta con facturas actualmente. Pulse en "Crear factura" para crear su primer factura.
                 
               
               

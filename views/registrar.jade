@@ -6,12 +6,12 @@ block contenido
     br
     form(action="/registrar", method="POST")
       h3 Nombre
-      input(type="text" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      input(type="text" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z /s]+" required)
       h3 Apellido
-      input(type="text" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      input(type="text" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z /s]+" required)
       h3 Correo
-      input(type="text" name="email" id="email" placeholder="Email" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      input(type="text" name="email" id="email" placeholder="Email" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z0-9 /s]+[@][A-Za-z0-9 /s]+[.][A-Za-z0-9 /s]+" required)
       h3 Password
-      input(type="password" name="contra" id="contra" placeholder="Contra" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+      input(type="password" name="contra" id="contra" placeholder="Contra" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" )
       br
       input(type="submit" value="Aceptar" class="btn btn-default input-lg") 
