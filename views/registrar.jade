@@ -1,17 +1,20 @@
 extends ./layout.jade
 block contenido
-  div(class="container")
-    h1 Registrarse
-    br
+  div(class="container jumbotron" style="background-color: rgba(0,0,0,.05); margin: 5%;")
+    h1(style="text-align: center") Registro de usuario
     br
     form(action="/registrar", method="POST")
-      h3 Nombre
-      input(type="text" name="nombre" id="nombre" placeholder="Nombre" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z /s]+" required)
-      h3 Apellido
-      input(type="text" name="apellido" id="apellido" placeholder="Apellido" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z /s]+" required)
+      div(class="row")
+        div(class="col-xs-6")
+          h3 Nombre
+          input(type="text" name="nombre" id="nombre" placeholder="Nombre o nombres en caso de tener mas de uno" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[A-Za-z /s]+" required)
+        div(class="col-xs-6")
+          h3 Apellido
+          input(type="text" name="apellido" id="apellido" placeholder="Apellido o apellidos en caso de tener mas de uno" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[A-Za-z /s]+" required)
+      div()
       h3 Correo
-      input(type="text" name="email" id="email" placeholder="Email" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z0-9 /s]+[@][A-Za-z0-9 /s]+[.][A-Za-z0-9 /s]+" required)
-      h3 Password
-      input(type="password" name="contra" id="contra" placeholder="Contra" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" )
+      input(type="text" name="email" id="email" placeholder="Ej. abc@def.com" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" pattern="[A-Za-z0-9 /s]+[@][A-Za-z0-9 /s]+[.][A-Za-z0-9 /s]+" required)
+      h3 Contraseña
+      input(type="password" name="contra" id="contra" placeholder="Admite: Letras, numeros, caracteres especiales" aria-describedby="sizing-addon1" style="width: 40%" class="form-control" )
       br
-      input(type="submit" value="Aceptar" class="btn btn-default input-lg") 
+      input(type="submit" value="Aceptar" class="btn btn-default input-lg" style="width: 100%") 

@@ -1,6 +1,6 @@
 extends ./layout.jade
 block contenido
-  div(class="container" align="center" style="text-align: center; margin-top: 15%")
+  div(class="container" align="center" style="text-align: center; margin-top: 15%; background-color: rgba(0,0,0,.05); width: 50%")
     h1 Iniciar sesion
     br
     form(action="/sessions" method="POST")
@@ -12,5 +12,5 @@ block contenido
         span(class="input-group-addon" id="basic-addon1" style="margin-left:35%") ?
         input(type="password" name="contra" class="form-control" id="contra" placeholder="Contra" style="width: 40%" aria-describedby="sizing-addon1")
       br 
-      input(type="submit" value="Aceptar" class="btn btn-default input-lg" width="60%") 
+      input(type="submit" value="Entrar" class="btn btn-success input-lg" width="60%") 
     

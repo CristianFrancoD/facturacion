@@ -1,27 +1,50 @@
 extends ./layout.jade
 block contenido
-    h1 Crear factura
-    form(action="/crearfac", method="POST")
-      h3 Cliente
-      input(type="text" name="cliente" id="cliente" placeholder="Cliente" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 RFC
-      input(type="text" name="rfc" id="rfc" placeholder="RFC" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Direccion
-      input(type="text" name="direccion" id="direccion" placeholder="Direccion" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Fecha
-      input(type="text" name="fecha" id="fecha" placeholder="Fecha" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Numero de factura
-      input(type="text" name="nofac" id="nofac" placeholder="No. Factura" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Cantidad
-      input(type="text" name="cant" id="cant" placeholder="Cantidad" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Descripcion
-      input(type="text" name="desc" id="desc" placeholder="Descripcion" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Precio unitario
-      input(type="text" name="punit" id="punit" placeholder="Precio unitario" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Precio total
-      input(type="text" name="ptotal" id="ptotal" placeholder="Precio total" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      h3 Sub total
-      input(type="text" name="subtotal" id="subtotal" placeholder="Subtotal" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
-      br
-      input(type="submit" value="Aceptar" class="btn btn-default input-lg") 
-    
+      div(class="container")
+          h1 Crear factura
+          form(action="/crearfac", method="POST")
+            div(class="row")
+                h2(style="color: #cfcfcf") Cliente
+              div(class="col-xs-6")
+                h3 Nombre completo
+                input(type="text" name="cliente" id="cliente" placeholder="Cliente" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[A-Za-z /s]+" required)
+              div(class="col-xs-6")
+                h3 RFC
+                input(type="text" name="rfc" id="rfc" placeholder="RFC" aria-describedby="sizing-addon1" style="width: 40%" class="form-control")
+            div(class="row")
+              div(class="col-xs-12")    
+                h3 Direccion
+                input(type="text" name="direccion" id="direccion" placeholder="Direccion" aria-describedby="sizing-addon1" style="width: 100%" class="form-control")
+            br
+            hr
+            div(class="row")
+                h2(style="color: #cfcfcf") Datos de compra
+              div(class="col-xs-2")     
+                h3 Fecha
+                input(type="text" name="fecha" id="fecha" placeholder="Fecha" aria-describedby="sizing-addon1" style="width: 90%" class="form-control")
+              div(class="col-xs-10")    
+                h3 Numero de factura
+                input(type="text" name="nofac" id="nofac" placeholder="No. Factura" aria-describedby="sizing-addon1" style="width: 30%" class="form-control")
+            hr
+            div(class="row")
+              div(class="col-xs-2")       
+                h3 Cantidad
+                input(type="text" name="cant" id="cant" placeholder="Cantidad" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[0-9]+" required)
+              div(class="col-xs-6")    
+                h3 Descripcion
+                input(type="text" name="desc" id="desc" placeholder="Descripcion" aria-describedby="sizing-addon1" style="width: 100%" class="form-control")
+              div(class="col-xs-4")    
+                h3 Precio unitario
+                input(type="text" name="punit" id="punit" placeholder="Precio unitario" aria-describedby="sizing-addon1" style="width: 60%" class="form-control" pattern="[0-9]+" required)
+            div(class="row")  
+              div(class="col-xs-2")    
+                h3 Precio total
+                input(type="text" name="ptotal" id="ptotal" placeholder="Precio total" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[0-9]+" required)
+              div(class="col-xs-2")    
+                h3 Sub total
+                input(type="text" name="subtotal" id="subtotal" placeholder="Subtotal" aria-describedby="sizing-addon1" style="width: 100%" class="form-control" pattern="[0-9]+" required)
+            br
+            br
+            div(class="row" style="text-align: center")       
+                input(type="submit" value="Aceptar" class="btn btn-success input-lg" style="width: 100%") 
+            
